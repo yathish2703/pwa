@@ -12,9 +12,10 @@ event.waitUntil(
     caches.open('my-cache').then(function(cache) {
     return cache.addAll([
         '/',
-        '/index.html',
-        '/styles.css',
-        '/main.js'
+        './stock_data_fetch_API.html',
+        './Data.json',
+        './Stock_data_Fetch_Local_Data.html',
+        './icon.jpg'
     ]);
     })
 );
@@ -28,7 +29,7 @@ event.respondWith(
 );
 });
 
-self.addEventListener('sync', function(event) {
+self.addEventListener('sync-button', function(event) {
 if (event.tag === 'my-background-sync') {
     event.waitUntil(syncData());
 }

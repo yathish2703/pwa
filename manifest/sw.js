@@ -1,76 +1,36 @@
-// self.addEventListener("install",event => {
-
-//     console.log("install")
-//     console.log("started the caching")
-//     caches.open("chace_name").then(cache => {
-// cache.addAll([
-//     './index.html',
-//     './manifest.json',
-//     './img/icon128.png',
-//     './img/icon256.png',
-//     './img/icon96.png',
-//     './img/image.webp',
-//     './img/image2.png',
-//     './img/logo.png',
-//     "./style.css"
-
-// ])
-
-//     })
-// }
-// )
-
-// self.addEventListener("fetch",event =>{
-// console.log("feching the data from cache")
-// event.respondWith(
-//     caches.match(event.request).then(
-//         response =>{
-//             if(response)
-//             {
-//                 return response
-//             }
-//             else
-//             {
-//                 fetch(response).then(result =>{
-//                     return result
-//             })
-//             }
-//         } 
-//     )
-// )
-
-// })
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/manifest/sw.js')
+            .then(registration => {
+                console.log('Service Worker registered with scope:', registration.scope);
+            })
+            .catch(error => {
+                console.log('Service Worker registration failed:', error);
+            });
+    });
+}
 
 
+self.addEventListener('install', event => {
+    console.log('Service Worker installing.');
+    // Perform install steps
+});
 
-// // Check if browser supports service workers and Background Sync
-// if ('serviceWorker' in navigator && 'SyncManager' in window) {
-//     navigator.serviceWorker.register('/service-worker.js')
-//         .then(function(registration) {
-//             console.log('Service Worker registered successfully.');
-//             return registration.sync.register('syncCachedData');
-//         })
-//         .catch(function(error) {
-//             console.error('Service Worker registration failed:', error);
-//         });
-// }
+self.addEventListener('activate', event => {
+    console.log('Service Worker activating.');
+    // Perform activate steps
+});
 
-// // Service Worker logic
-// self.addEventListener('sync', function(event) {
-//     if (event.tag === 'syncCachedData') {
-//         event.waitUntil(syncCachedData());
-//     }
-// });
-
-// function syncCachedData() {
-//     return caches.open('my-cache').then(function(cache) {
-//         return cache.matchAll('/api/data').then(function(cachedResponses) {
-//             return Promise.all(cachedResponses.map(function(response) {
-//                 return fetch(response.url, {
-//                     method: 'POST',
-//                     body: response.body
-//                 });
-//             }));
-//         });
-//     });
-// }
+self.addEventListener('fetch', event => {
+    event.respondWith(
+        caches.match(event.request)
+            .then(response => {
+                // Cache hit - return response
+                if (response) {
+                    return response;
+                }
+                return fetch(event.request);
+            }
+        )
+    );
+});

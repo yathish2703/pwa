@@ -10,6 +10,31 @@ A Progressive Web App (PWA) is a type of application software delivered through 
 - **Push Notifications**: They can send push notifications to keep users engaged.
 - **No Installation Required**: Users can add PWAs to their home screen without going through an app store.
 
+## Difference Between Native Apps and PWAs
+
+### Native Apps
+- **Platform-Specific**: Native apps are built for specific platforms (iOS, Android) using platform-specific languages (Swift, Kotlin).
+- **Installation**: Must be downloaded and installed from app stores.
+- **Performance**: Generally offer better performance and access to device features.
+- **Updates**: Updates are managed through app stores.
+- **Offline Capability**: Can work offline if designed to do so.
+
+### Progressive Web Apps (PWAs)
+- **Cross-Platform**: PWAs are built using web technologies (HTML, CSS, JavaScript) and work across different platforms.
+- **Installation**: Can be added to the home screen directly from the browser without app store involvement.
+- **Performance**: Designed to be fast and reliable, but may not match the performance of native apps.
+- **Updates**: Updates are handled automatically through the web.
+- **Offline Capability**: Can work offline or on low-quality networks using service workers.
+
+### Key Differences
+- **Development**: Native apps require platform-specific development, while PWAs use standard web technologies.
+- **Distribution**: Native apps are distributed through app stores, whereas PWAs are accessed via URLs.
+- **Access to Device Features**: Native apps have full access to device features, while PWAs have limited access.
+- **User Experience**: Native apps provide a more integrated experience, while PWAs offer a consistent experience across platforms.
+- **Cost and Time**: Developing and maintaining native apps for multiple platforms can be more costly and time-consuming compared to PWAs.
+
+By understanding these differences, you can choose the right approach for your application based on your target audience, budget, and desired features.
+
 ## Manifest File
 The manifest file is a JSON file that provides the browser with information about your web application and how it should behave when installed on a user's device. It includes details such as the app's name, icons, start URL, display mode, and theme colors.
 
@@ -21,6 +46,9 @@ The manifest file is a JSON file that provides the browser with information abou
 - **background_color**: The background color of the splash screen when the application is launched.
 - **theme_color**: The theme color for the application, which affects the appearance of the browser's UI.
 - **icons**: An array of image objects representing the application icon in various sizes.
+
+
+
 
 ### Example of a Manifest File
 ```json
