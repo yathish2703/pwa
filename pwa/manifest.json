@@ -1,0 +1,27 @@
+{
+    
+    "name" : "PWA SIT College",
+    "short_name":"PWA",
+    "description":"a pwa application",
+    "author":"yathish L",
+    "offline_enabled":true,
+    "start_url":"/index2.html",
+    "display":"standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#000000",
+    "scope": "/pwa/",
+    "icons": [
+        {
+            "src": "img/icon256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        },
+        {
+            "src": "img/icon128.png",
+            "sizes": "128x128",
+            "type": "image/png"
+        }
+    ],
+    "orientation": "portrait"
+    
+}
